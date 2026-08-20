@@ -65,15 +65,26 @@ How long is Migrationsverket taking on this type of case right now?
 
 It will ask for your nationality, permit type, and timeline if it does not already have them — the general-case answer is wrong often enough that answering without them is not a check at all.
 
-## Development
+## Benchmark
 
-The skill was developed against a small evaluation set of real questions, comparing each revision against the previous one. Across three rounds the pass rate on those assertions went from 71% to 93%, measured on the Chinese-language version; this English version has not been re-measured. There is no measurement against a no-skill baseline.
+Developed against a small evaluation set of real questions, with each revision compared against the previous one. The headline figures:
+
+| Comparison | New | Baseline |
+|---|---|---|
+| Skill vs. no skill (5 assertions per case) | 10/10 | 9/10 |
+| v2 vs. v1 (7 assertions per case) | 12/14 | 10/14 |
+| v3 vs. v2 | 13/14 | 13/14 |
+
+The no-skill comparison proved little: a capable model with web access nearly saturates an assertion set that loose. The real gain is v1 → v2, and it came from one change — giving the statutory conditions and the current processing time separate lines in the output template, instead of asking for the distinction in prose.
+
+Full per-case results, the assertion lists, and the caveats that matter (two test cases, one run per cell, unstable SFS citations) are in [BENCHMARK.md](BENCHMARK.md). All of it was measured on the Chinese-language version; this English version has not been re-measured.
 
 ## Structure
 
 ```
 swedish-rules/
-└── SKILL.md
+├── SKILL.md
+└── BENCHMARK.md
 ```
 
 ## License
